@@ -1,161 +1,193 @@
-"use client"
+'use client';
 
 import {
-    AudioWaveform,
-    BookOpen,
-    Bot,
-    Command,
-    Frame,
-    GalleryVerticalEnd,
-    Map,
-    PieChart,
-    Settings2,
-    SquareTerminal,
-} from "lucide-react"
-import * as React from "react"
-
+  ArrowRightLeft,
+  Binary,
+  Boxes,
+  ChartBarIncreasing,
+  Globe,
+  Handshake,
+  ShoppingBasketIcon,
+  Store,
+  Users
+} from 'lucide-react';
+import * as React from 'react';
 
 import {
-    Sidebar,
-    SidebarContent,
-    SidebarFooter,
-    SidebarHeader,
-    SidebarRail,
-} from "@/components/ui/sidebar"
-import { NavMain } from "./nav-main"
-import { NavProjects } from "./nav-projects"
-import { NavUser } from "./nav-user"
-import { TeamSwitcher } from "./team-switcher"
+  Sidebar,
+  SidebarContent,
+  SidebarFooter,
+  SidebarHeader,
+} from '@/components/ui/sidebar';
+import { NavMain } from './nav-main';
+import { NavProjects } from './nav-projects';
+import { NavUser } from './nav-user';
+import { TeamSwitcher } from './team-switcher';
 
 // This is sample data.
 const data = {
   user: {
-    name: "shadcn",
-    email: "m@example.com",
-    avatar: "/avatars/shadcn.jpg",
+    name: 'Rajibul Hasan',
+    email: 'rajibul@fabign.com',
+    avatar: '/avatars/shadcn.jpg',
   },
   teams: [
     {
-      name: "Acme Inc",
-      logo: GalleryVerticalEnd,
-      plan: "Enterprise",
+      name: 'Shop Dashboard',
+      logo: Store,
+      plan: 'Enterprise',
     },
     {
-      name: "Acme Corp.",
-      logo: AudioWaveform,
-      plan: "Startup",
+      name: 'E-commerce Dashboard',
+      logo: Globe,
+      plan: 'Startup',
     },
     {
-      name: "Evil Corp.",
-      logo: Command,
-      plan: "Free",
+      name: 'Reseller Dashboard',
+      logo: Handshake,
+      plan: 'Free',
+    },
+  ],
+  hotMenu: [
+    {
+      name: 'Quick Sales',
+      url: '/sales',
+      icon: ShoppingBasketIcon,
+    },
+    {
+      name: 'Inventory Transfer',
+      url: 'inventory-transfer',
+      icon: ArrowRightLeft,
     },
   ],
   navMain: [
+
     {
-      title: "Playground",
-      url: "#",
-      icon: SquareTerminal,
-      isActive: true,
+      title: 'Shop',
+      url: '#',
+      icon: Store,
       items: [
         {
-          title: "History",
-          url: "#",
+          title: 'Shops',
+          url: '#',
         },
         {
-          title: "Starred",
-          url: "#",
-        },
-        {
-          title: "Settings",
-          url: "#",
+          title: 'Shop Users',
+          url: '#',
         },
       ],
     },
     {
-      title: "Models",
-      url: "#",
-      icon: Bot,
+      title: 'Reports',
+      url: '#',
+      icon: ChartBarIncreasing,
+      isActive: false,
       items: [
         {
-          title: "Genesis",
-          url: "#",
+          title: 'Sales',
+          url: '#',
         },
         {
-          title: "Explorer",
-          url: "#",
+          title: 'Inventory',
+          url: '#',
         },
         {
-          title: "Quantum",
-          url: "#",
-        },
-      ],
-    },
-    {
-      title: "Documentation",
-      url: "#",
-      icon: BookOpen,
-      items: [
-        {
-          title: "Introduction",
-          url: "#",
-        },
-        {
-          title: "Get Started",
-          url: "#",
-        },
-        {
-          title: "Tutorials",
-          url: "#",
-        },
-        {
-          title: "Changelog",
-          url: "#",
-        },
-      ],
-    },
-    {
-      title: "Settings",
-      url: "#",
-      icon: Settings2,
-      items: [
-        {
-          title: "General",
-          url: "#",
-        },
-        {
-          title: "Team",
-          url: "#",
-        },
-        {
-          title: "Billing",
-          url: "#",
-        },
-        {
-          title: "Limits",
-          url: "#",
+          title: 'Pathao',
+          url: '#',
         },
       ],
     },
   ],
-  projects: [
+  settings: [
     {
-      name: "Design Engineering",
-      url: "#",
-      icon: Frame,
+      title: 'Products',
+      url: '#',
+      icon: Boxes,
+      isActive: false,
+      items: [
+        {
+          title: 'Add New',
+          url: '/product/new',
+        },
+        {
+          title: 'Manage Products',
+          url: '/product/products',
+        },
+        {
+          title: 'Category',
+          url: '/product/category',
+        },
+        {
+          title: 'Sub-Category',
+          url: '/product/sub-category',
+        },
+      ],
     },
     {
-      name: "Sales & Marketing",
-      url: "#",
-      icon: PieChart,
+      title: 'Shop',
+      url: '#',
+      icon: Store,
+      isActive: false,
+      items: [
+        {
+          title: 'Add New',
+          url: 'shop/new',
+        },
+        {
+          title: 'Manage Shop',
+          url: 'shop/shops',
+        },
+        {
+          title: 'Shop Users',
+          url: 'shop/users',
+        },
+      ],
+    },
+        {
+      title: 'Promo',
+      url: '#',
+      icon: Binary,
+      items: [
+        {
+          title: 'Add New',
+          url: 'promo/new',
+        },
+        {
+          title: 'Manage Promo',
+          url: 'promo/promos',
+        },
+      ],
     },
     {
-      name: "Travel",
-      url: "#",
-      icon: Map,
+      title: 'Users',
+      url: '#',
+      icon: Users,
+      items: [
+        {
+          title: 'E-commerce Users',
+          url: 'users/e-commerce',
+        },
+        {
+          title: 'Promo Users',
+          url: 'users/promo',
+        },
+        {
+          title: 'Reseller Users',
+          url: 'users/resellers',
+        },
+        {
+          title: 'Blacklist',
+          url: 'users/blacklist',
+        },
+        {
+          title: 'Force password change',
+          url: 'users/force-password-change',
+        },
+      ],
     },
+
   ],
-}
+};
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
   return (
@@ -164,13 +196,14 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
         <TeamSwitcher teams={data.teams} />
       </SidebarHeader>
       <SidebarContent>
-        <NavMain items={data.navMain} />
-        <NavProjects projects={data.projects} />
+        <NavProjects projects={data.hotMenu} title="Quick Menu" />
+        <NavMain items={data.navMain} title="Categorised Reports" />
+        <NavMain items={data.settings} title="Settings" />
       </SidebarContent>
       <SidebarFooter>
         <NavUser user={data.user} />
       </SidebarFooter>
-      <SidebarRail />
+      {/* <SidebarRail /> */}
     </Sidebar>
-  )
+  );
 }
