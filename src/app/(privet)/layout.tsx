@@ -70,7 +70,6 @@ export default function RootLayout({
             {children}
           </SidebarInset>
         </SidebarProvider>
-        
       </body>
     </html>
   );

@@ -5,7 +5,7 @@ import {
   Bell,
   ChevronsUpDown,
   CreditCard,
-  LogOut
+  LogOut,
 } from 'lucide-react';
 
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
@@ -75,7 +75,7 @@ export function NavUser({
               </div>
             </DropdownMenuLabel>
             <DropdownMenuSeparator />
-     
+
             <DropdownMenuSeparator />
             <DropdownMenuGroup>
               <DropdownMenuItem>

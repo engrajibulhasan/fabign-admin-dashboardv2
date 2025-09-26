@@ -9,7 +9,7 @@ import {
   Handshake,
   ShoppingBasketIcon,
   Store,
-  Users
+  Users,
 } from 'lucide-react';
 import * as React from 'react';
 
@@ -61,7 +61,6 @@ const data = {
     },
   ],
   navMain: [
-
     {
       title: 'Shop',
       url: '#',
@@ -143,7 +142,7 @@ const data = {
         },
       ],
     },
-        {
+    {
       title: 'Promo',
       url: '#',
       icon: Binary,
@@ -185,7 +184,6 @@ const data = {
         },
       ],
     },
-
   ],
 };
 
