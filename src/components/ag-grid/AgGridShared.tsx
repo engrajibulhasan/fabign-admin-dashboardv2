@@ -2,21 +2,21 @@
 import { useCallback, useMemo } from "react";
 
 import {
-    ClientSideRowModelModule,
-    CsvExportModule,
-    ModuleRegistry,
-    NumberFilterModule,
-    TextFilterModule,
-    ValidationModule,
-    type ColDef,
-    type GridReadyEvent,
+  ClientSideRowModelModule,
+  CsvExportModule,
+  ModuleRegistry,
+  NumberFilterModule,
+  TextFilterModule,
+  ValidationModule,
+  type ColDef,
+  type GridReadyEvent,
 } from "ag-grid-community";
 import {
-    ClipboardModule,
-    ColumnMenuModule,
-    ContextMenuModule,
-    ExcelExportModule,
-    SetFilterModule,
+  ClipboardModule,
+  ColumnMenuModule,
+  ContextMenuModule,
+  ExcelExportModule,
+  SetFilterModule,
 } from "ag-grid-enterprise";
 import { AgGridReact } from "ag-grid-react";
 
@@ -75,6 +75,7 @@ export interface AgGridProps<T = any> {
 const AgGridShared = <T,>({
   gridId,
   columnDefs,
+  
   rowData,
   height = '500px',
   width = '100%',
@@ -97,7 +98,7 @@ const AgGridShared = <T,>({
   // Merge default column definitions
   const mergedDefaultColDef = useMemo((): Partial<ColDef<T>> => ({
     flex: 1,
-    minWidth: 100,
+    minWidth: 60,
     filter: true,
     sortable: true,
     resizable: true,
@@ -140,6 +141,7 @@ const AgGridShared = <T,>({
         suppressRowClickSelection={false}
         animateRows={true}
         {...gridOptions}
+        
       />
     </div>
   );

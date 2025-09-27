@@ -20,6 +20,7 @@ interface Post {
   id: number;
   title: string;
   body: string;
+  imageUrl?: string; 
 }
 
 export default function CategoryTableShared() {
@@ -35,6 +36,11 @@ export default function CategoryTableShared() {
         setLoading(true);
         setError(null);
         const response = await axios.get<Post[]>('https://jsonplaceholder.typicode.com/posts');
+        // Add imageUrl to each post for export
+        const postsWithImages = response.data.map(post => ({
+          ...post,
+          imageUrl: 'https://i.ibb.co.com/XfRQ1Sxs/panjabi.webp'
+        }));
         setPosts(response.data);
       } catch (err) {
         setError(err instanceof Error ? err.message : 'An error occurred');
@@ -84,10 +90,12 @@ export default function CategoryTableShared() {
   const postColumns: ColDef<Post>[] = [
     { 
       field: 'id', 
-      headerName: 'CAT ID', 
+      headerName: 'CATID', 
       width: 80,
-      filter: 'agNumberColumnFilter',
-      sort: 'asc'
+      maxWidth:100,
+      filter: false,
+      sort: 'asc',
+      cellStyle: { display: 'flex', alignItems: 'center', justifyContent: 'center' }
     },
     { 
       colId: 'image',
@@ -99,11 +107,17 @@ export default function CategoryTableShared() {
       resizable: false,
       cellStyle: { display: 'flex', alignItems: 'center', justifyContent: 'center' }
     },
+     // Hidden column for export with image URL
+    { 
+      field: 'imageUrl',
+      headerName: 'Image URL',
+      hide: true, // Hidden from view but included in export
+    },
 
     { 
       field: 'title', 
       headerName: 'Category Title', 
-      flex: 2,
+      flex: 3,
       filter: 'agTextColumnFilter',
       cellStyle: { lineHeight: '1.4' }
     },
@@ -144,6 +158,8 @@ export default function CategoryTableShared() {
     </div>
   );
 
+  
+
   return (
     <>
       
@@ -152,8 +168,18 @@ export default function CategoryTableShared() {
         gridId="posts-grid"
         columnDefs={postColumns}
         rowData={posts}
-        height="600px"
+        height="700px"
         pagination={true}
+        gridOptions={{
+          defaultCsvExportParams: {
+            fileName: 'categories.csv',
+          },
+          defaultExcelExportParams: {
+            fileName: 'categories.xlsx',
+          },
+          rowHeight: 80
+        }}
+
         pageSize={5}
       />
 
