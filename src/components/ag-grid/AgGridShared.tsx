@@ -1,5 +1,5 @@
 'use client';
-import { useCallback, useMemo } from "react";
+import { useCallback, useMemo } from 'react';
 
 import {
   ClientSideRowModelModule,
@@ -10,23 +10,22 @@ import {
   ValidationModule,
   type ColDef,
   type GridReadyEvent,
-} from "ag-grid-community";
+} from 'ag-grid-community';
 import {
   ClipboardModule,
   ColumnMenuModule,
   ContextMenuModule,
   ExcelExportModule,
   SetFilterModule,
-} from "ag-grid-enterprise";
-import { AgGridReact } from "ag-grid-react";
-
+} from 'ag-grid-enterprise';
+import { AgGridReact } from 'ag-grid-react';
 
 // Register shared Modules globally (runs once)
 const sharedModules = [
   ClientSideRowModelModule,
   ColumnMenuModule,
   ContextMenuModule,
-  ...(process.env.NODE_ENV !== "production" ? [ValidationModule] : []),
+  ...(process.env.NODE_ENV !== 'production' ? [ValidationModule] : []),
 ];
 
 ModuleRegistry.registerModules(sharedModules);
@@ -42,7 +41,7 @@ export const AgGridModules = {
     SetFilterModule,
     ClipboardModule,
     ExcelExportModule,
-  ]
+  ],
 };
 
 export interface AgGridProps<T = any> {
@@ -75,7 +74,7 @@ export interface AgGridProps<T = any> {
 const AgGridShared = <T,>({
   gridId,
   columnDefs,
-  
+
   rowData,
   height = '500px',
   width = '100%',
@@ -96,36 +95,41 @@ const AgGridShared = <T,>({
   }, [modules]);
 
   // Merge default column definitions
-  const mergedDefaultColDef = useMemo((): Partial<ColDef<T>> => ({
-    flex: 1,
-    minWidth: 60,
-    filter: true,
-    sortable: true,
-    resizable: true,
-    ...defaultColDef,
-  }), [defaultColDef]);
+  const mergedDefaultColDef = useMemo(
+    (): Partial<ColDef<T>> => ({
+      flex: 1,
+      minWidth: 60,
+      filter: true,
+      sortable: true,
+      resizable: true,
+      ...defaultColDef,
+    }),
+    [defaultColDef]
+  );
 
   // Handle grid ready event
-  const handleGridReady = useCallback((event: GridReadyEvent<T>) => {
-    // Log registered modules for debugging
-    const moduleClasses = [
-      ClipboardModule,
-      ClientSideRowModelModule,
-      ColumnMenuModule,
-      ContextMenuModule,
-      CsvExportModule,
-      ExcelExportModule,
-      NumberFilterModule,
-      SetFilterModule,
-      TextFilterModule,
-    ];
+  const handleGridReady = useCallback(
+    (event: GridReadyEvent<T>) => {
+      // Log registered modules for debugging
+      const moduleClasses = [
+        ClipboardModule,
+        ClientSideRowModelModule,
+        ColumnMenuModule,
+        ContextMenuModule,
+        CsvExportModule,
+        ExcelExportModule,
+        NumberFilterModule,
+        SetFilterModule,
+        TextFilterModule,
+      ];
 
-
-    // Call user-provided callback
-    if (onGridReady) {
-      onGridReady(event);
-    }
-  }, [gridId, onGridReady]);
+      // Call user-provided callback
+      if (onGridReady) {
+        onGridReady(event);
+      }
+    },
+    [gridId, onGridReady]
+  );
 
   return (
     <div className="ag-theme-material" style={{ height, width }}>
@@ -141,7 +145,6 @@ const AgGridShared = <T,>({
         suppressRowClickSelection={false}
         animateRows={true}
         {...gridOptions}
-        
       />
     </div>
   );

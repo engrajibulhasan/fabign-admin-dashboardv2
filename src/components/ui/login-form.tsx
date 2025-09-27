@@ -1,4 +1,4 @@
-"use client";
+'use client';
 import { Button } from '@/components/ui/button';
 import {
   Card,
@@ -16,9 +16,9 @@ export function LoginForm({
   ...props
 }: React.ComponentProps<'div'>) {
   const router = useRouter();
-  const handleRedirect = (e:React.FormEvent<HTMLFormElement>) => {
+  const handleRedirect = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    router.push("/dashboard");
+    router.push('/dashboard');
   };
 
   return (
@@ -31,7 +31,7 @@ export function LoginForm({
           </CardDescription>
         </CardHeader>
         <CardContent>
-          <form onSubmit={handleRedirect}  >
+          <form onSubmit={handleRedirect}>
             <div className="flex flex-col gap-6">
               <div className="grid gap-3">
                 <Label htmlFor="email">Email</Label>

@@ -83,7 +83,7 @@ export function TeamSwitcher({
                 <TrendingUpDown className="size-4" />
               </div>
               <div className="text-muted-foreground font-medium">
-               <Link href="/dashboard">Main Dashboard</Link> 
+                <Link href="/dashboard">Main Dashboard</Link>
               </div>
             </DropdownMenuItem>
           </DropdownMenuContent>
