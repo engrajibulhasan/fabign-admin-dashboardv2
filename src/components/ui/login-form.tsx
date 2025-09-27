@@ -1,3 +1,4 @@
+"use client";
 import { Button } from '@/components/ui/button';
 import {
   Card,
@@ -9,10 +10,17 @@ import {
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { cn } from '@/lib/utils';
+import { useRouter } from 'next/navigation';
 export function LoginForm({
   className,
   ...props
 }: React.ComponentProps<'div'>) {
+  const router = useRouter();
+  const handleRedirect = (e:React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    router.push("/dashboard");
+  };
+
   return (
     <div className={cn('flex flex-col gap-6', className)} {...props}>
       <Card>
@@ -23,7 +31,7 @@ export function LoginForm({
           </CardDescription>
         </CardHeader>
         <CardContent>
-          <form>
+          <form onSubmit={handleRedirect}  >
             <div className="flex flex-col gap-6">
               <div className="grid gap-3">
                 <Label htmlFor="email">Email</Label>

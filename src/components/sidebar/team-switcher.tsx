@@ -18,6 +18,7 @@ import {
   SidebarMenuItem,
   useSidebar,
 } from '@/components/ui/sidebar';
+import Link from 'next/link';
 
 export function TeamSwitcher({
   teams,
@@ -82,7 +83,7 @@ export function TeamSwitcher({
                 <TrendingUpDown className="size-4" />
               </div>
               <div className="text-muted-foreground font-medium">
-                Main Dashboard
+               <Link href="/dashboard">Main Dashboard</Link> 
               </div>
             </DropdownMenuItem>
           </DropdownMenuContent>
