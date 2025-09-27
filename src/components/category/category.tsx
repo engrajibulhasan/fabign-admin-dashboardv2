@@ -16,9 +16,7 @@ export default function Category() {
   ];
   return (
     <div className='px-4'>
-            {/* <CategoriesTable/> */}
             <TitleCard title='Categories' actions={actions}/>
-           
             <CategoryTableShared/>
         </div>
   )
