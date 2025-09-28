@@ -1,36 +1,26 @@
-// components/page-card.tsx (simpler version)
 'use client';
 import { Button } from '@/components/ui/button';
 import { Card, CardHeader, CardTitle } from '@/components/ui/card';
+import { ActionType } from '@/lib/types';
 import { LucideIcon } from 'lucide-react';
-
-export interface Action {
-  label: string;
-  icon?: LucideIcon;
-  variant?:
-    | 'default'
-    | 'destructive'
-    | 'outline'
-    | 'secondary'
-    | 'ghost'
-    | 'link';
-  onClick: () => void;
-  disabled?: boolean;
-}
 
 interface TitleCardProps {
   title: string;
-  actions?: Action[];
+  icon?: LucideIcon | undefined;
+  actions?: ActionType[];
 }
 
 export default function TitleCard({
   title = 'Page Title',
+  icon: Icon,
   actions = [],
 }: TitleCardProps) {
   return (
     <Card className="w-full mb-5">
       <CardHeader className="flex flex-row items-center justify-between">
-        <CardTitle className="text-xl">{title}</CardTitle>
+        <CardTitle className="text-xl flex items-center">
+          {Icon && <Icon className="h-4 w-4 mr-2" />} {title}
+        </CardTitle>
 
         {actions.length > 0 && (
           <div className="flex items-center gap-2">

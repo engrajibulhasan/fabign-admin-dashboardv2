@@ -1,21 +1,27 @@
 'use client';
-import { ActionObjType } from '@/lib/types';
-import { Plus } from 'lucide-react';
+import { ActionType } from '@/lib/types';
+import { Box, Plus } from 'lucide-react';
 import TitleCard from '../ui/title-card';
 import CategoryTableShared from './category-table-shared';
 
 export default function Category() {
-  const actions: ActionObjType[] = [
+  const handleAddToCardModal = () => {
+    console.log('Category Add Modal Opened');
+  }
+
+  const actions: ActionType[] = [
     {
       label: 'Add Category',
       icon: Plus,
       variant: 'default' as const,
-      onClick: () => console.log('Add clicked'),
+      onClick: function(){
+        console.log("hahaha");
+      },
     },
   ];
   return (
     <div className="px-4">
-      <TitleCard title="Categories" actions={actions} />
+      <TitleCard icon={Box}  title="Categories" actions={actions} />
       <CategoryTableShared />
     </div>
   );
